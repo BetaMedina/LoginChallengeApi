@@ -19,7 +19,7 @@ Server side desenvolvido utilizando:
 
 # Finalidade!
 
-  - Praticar/ realizar o desafio propsto
+  - Praticar/ realizar o desafio proposto
 
 # Endpoints:
 
