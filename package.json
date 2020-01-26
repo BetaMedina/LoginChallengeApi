@@ -2,10 +2,13 @@
   "name": "challange",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "./src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "build": "npx sucrase ./src -d ./dist --transforms  imports",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +37,6 @@
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1",
-    "sucrase": "^3.10.1"
+    "sucrase": "^3.12.1"
   }
 }
