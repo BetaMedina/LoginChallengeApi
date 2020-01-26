@@ -21,13 +21,9 @@ class UserController {
       );
 
       return res.json({
-        token: jwt.sign(
-          { userID: user.id, date: new Date() },
-          authConfig.secret,
-          {
-            expiresIn: authConfig.expiresIn
-          }
-        ),
+        token: jwt.sign({ id: user.id, date: new Date() }, authConfig.secret, {
+          expiresIn: authConfig.expiresIn
+        }),
         id: user.id,
         data_criacao: user.createdAt,
         data_atualizacao: user.updatedAt,
@@ -40,12 +36,18 @@ class UserController {
 
   async read(req, res) {
     const { id } = req.params;
-    const { userId } = req;
-    if (userId !== Number(id)) {
+    const { userID } = req;
+    if (userID !== Number(id)) {
       return res.status(401).json({ err: 'Não autorizado' });
     }
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, {
+        include: {
+          model: Contact,
+          as: 'contact',
+          attributes: ['ddd', 'contact_number']
+        }
+      });
       return res.json(user);
     } catch (e) {
       return res.status(400).json(e.errors);

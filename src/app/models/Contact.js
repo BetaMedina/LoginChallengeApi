@@ -17,7 +17,8 @@ class Contact extends Model {
         }
       },
       {
-        sequelize
+        sequelize,
+        tableName: 'contacts'
       }
     );
     return this;

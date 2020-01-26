@@ -15,14 +15,11 @@ module.exports = {
         allowNull: true
       },
       ddd: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: false
+        type: Sequelize.INTEGER
       },
       contact_number: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: false
+        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,

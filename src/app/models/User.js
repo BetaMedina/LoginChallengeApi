@@ -26,7 +26,8 @@ class User extends Model {
         }
       },
       {
-        sequelize
+        sequelize,
+        tableName: 'users'
       }
     );
     this.addHook('beforeSave', async user => {
@@ -36,6 +37,13 @@ class User extends Model {
       }
     });
     return this;
+  }
+
+  static associate(models) {
+    this.hasOne(models.Contact, {
+      foreignKey: 'user_id',
+      as: 'contact'
+    });
   }
 
   async checkPassword(password) {
